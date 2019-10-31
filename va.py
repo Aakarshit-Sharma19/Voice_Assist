@@ -2,7 +2,6 @@
 from time import sleep
 from gtts import gTTS as gt
 import speech_recognition_assistance as spa
-from weather import Weather, Unit
 import vlc
 
 
@@ -69,7 +68,7 @@ def speak(string):
             tts.save(file)
             play = vlc.MediaPlayer(file)
             play.play()
-            sleep(0.8)
+            sleep(1.2)
             duration = play.get_length() / 1000
             sleep(duration)
             print(duration)
@@ -89,11 +88,10 @@ def main():
         'HELLO': f' Hi {name}',
     }
     func = {
-        'EXIT': exit,
+        'BYE': exit,
         'SPEAK': f.pronounce
     }
     while True:
-        print('values:', co.comms_means, co.internet)
         said_text = INPUT("> ")
         if said_text == -1:
             speak("No valid input detected")
