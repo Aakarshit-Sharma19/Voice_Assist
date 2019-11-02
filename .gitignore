@@ -3,3 +3,6 @@ __pycache__
 LICENSE
 sound.mp3
 sound.wav
+output.wav
+test.py
+.idea

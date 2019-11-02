@@ -1,7 +1,6 @@
 import pyaudio
 import wave
 import speech_recognition as sr
-from contextlib import redirect_stdout
 
 # pyaudio Initialization
 CHUNK = 1024
@@ -16,16 +15,9 @@ WAVE_OUTPUT_FILENAME = "sound.wav"
 r = sr.Recognizer()
 
 
-
 def mic():
+    p = pyaudio.PyAudio()
 
-    # The line below is exclusive to linux 
-    f = open('/dev/null', 'w')
-    with redirect_stdout(f):
-        p = pyaudio.PyAudio()
-
-    
-    
     stream = p.open(format=FORMAT,
                     channels=CHANNELS,
                     rate=RATE,
@@ -41,7 +33,6 @@ def mic():
         frames.append(data)
 
     print("Processing voice...")
-
     stream.stop_stream()
     stream.close()
     p.terminate()
@@ -54,7 +45,6 @@ def mic():
     wf.close()
 
 
-
 def speech_synth():
     try:
         recorded = sr.AudioFile('sound.wav')
@@ -62,12 +52,15 @@ def speech_synth():
             audio = r.record(source)
         string = r.recognize_google(audio)
         return string
-    except : 
-        return -1
+    except(sr.UnknownValueError):
+        return None
 
-def main_func():
+
+def listen():
     print('Listening')
     mic()
     return speech_synth()
+
+
 if __name__ == '__main__':
     pass
