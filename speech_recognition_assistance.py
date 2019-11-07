@@ -15,7 +15,9 @@ WAVE_OUTPUT_FILENAME = "sound.wav"
 r = sr.Recognizer()
 
 
-def mic():
+def mic(vlc_obj=None):
+    print('Listening')
+    playfile = vlc_obj
     p = pyaudio.PyAudio()
 
     stream = p.open(format=FORMAT,
@@ -27,13 +29,14 @@ def mic():
     print("* Speak")
 
     frames = []
-
+    playfile('cortana_open.mp3')
     for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
         data = stream.read(CHUNK)
         frames.append(data)
 
-    print("Processing voice...")
+    print("**Converting to Audio")
     stream.stop_stream()
+    playfile('cortana_close.mp3')
     stream.close()
     p.terminate()
 
@@ -52,12 +55,13 @@ def speech_synth():
             audio = r.record(source)
         string = r.recognize_google(audio)
         return string
-    except(sr.UnknownValueError):
+    except sr.UnknownValueError:
         return None
+    except sr.RequestError:
+        return -1
 
 
 def listen():
-    print('Listening')
     mic()
     return speech_synth()
 

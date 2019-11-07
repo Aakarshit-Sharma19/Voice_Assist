@@ -6,3 +6,6 @@ sound.wav
 output.wav
 test.py
 .idea
+build
+dist
+app.spec
