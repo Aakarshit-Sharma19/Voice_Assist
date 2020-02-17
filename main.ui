@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>732</width>
-    <height>632</height>
+    <height>623</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QLabel" name="Status">
+     <widget class="QLabel" name="status">
       <property name="text">
        <string>Welcome To Your Personal Assistant - Made By Aakarshit Sharma</string>
       </property>
@@ -31,30 +31,45 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QTextBrowser" name="historyYou"/>
-      </item>
-      <item row="0" column="2">
-       <widget class="QLabel" name="labelYou">
-        <property name="text">
-         <string>You</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QTextBrowser" name="historyAssistant"/>
-      </item>
      </layout>
     </item>
-    <item row="2" column="0">
-     <widget class="QLineEdit" name="textInput">
+    <item row="3" column="0">
+     <widget class="QLineEdit" name="text_input">
       <property name="text">
-       <string>Enter Text if Voice Is Not Used</string>
+       <string>Type In what you want to say</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
+    <item row="4" column="0">
      <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="1">
+       <widget class="QPushButton" name="pushInput">
+        <property name="text">
+         <string>Listen</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QPushButton" name="pushAbout">
+        <property name="text">
+         <string>About</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QPushButton" name="pushHelp">
+        <property name="text">
+         <string>Help</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="pushSwitchToText">
+        <property name="text">
+         <string>Switch To Text</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
        <spacer name="horizontalSpacer">
         <property name="orientation">
@@ -68,35 +83,10 @@
         </property>
        </spacer>
       </item>
-      <item row="0" column="1">
-       <widget class="QPushButton" name="pushSpeak">
-        <property name="text">
-         <string>Speak</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="4">
-       <widget class="QPushButton" name="pushExit">
-        <property name="text">
-         <string>Exit</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QPushButton" name="pushSwitch">
-        <property name="text">
-         <string>Switch To Text</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QPushButton" name="pushHelp">
-        <property name="text">
-         <string>Help</string>
-        </property>
-       </widget>
-      </item>
      </layout>
+    </item>
+    <item row="2" column="0">
+     <widget class="QTextBrowser" name="history"/>
     </item>
    </layout>
   </widget>

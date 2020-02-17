@@ -52,7 +52,7 @@ class VoiceFunctions(QtCore.QObject):
 
     def speak(self, string):
         self.signalSetStatus.emit('Voice Assistant:' + string)
-        status = self.parent.voice.speaks(self.comms, string)
+        status = self.parent.voice.synth_speech(self.comms, string)
         self.signalDefaultStatus.emit()
         if status == -1:
             self.signalTempStatus.emit(
@@ -69,7 +69,7 @@ class VoiceFunctions(QtCore.QObject):
             self.signalAppendUserHistory.emit(self.said_text)
         else:
             self.signalTempStatus.emit('No internet available, Only Text Input Available.', 2000)
-            self.comms.noInternet()
+            self.comms.no_internet()
         return self.said_text
 
 
@@ -170,7 +170,7 @@ class threadMain(QtCore.QThread):
             if command[0] == 'SWITCH':
                 if self.said_text == 'SWITCH TO TEXT':
                     self.speak('SWITCHING TO TEXT!')
-                    self.parent.comms.switchToText()
+                    self.parent.comms.switch_to_text()
                 else:
                     self.speak('switch to what?')
             elif reply is None and task is None:

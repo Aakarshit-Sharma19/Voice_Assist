@@ -1,6 +1,7 @@
 import pyaudio
 import wave
 import speech_recognition as sr
+from platform import system
 
 # pyaudio Initialization
 CHUNK = 1024
@@ -8,16 +9,27 @@ FORMAT = pyaudio.paInt16
 CHANNELS = 2
 RATE = 44100
 RECORD_SECONDS = 5
-WAVE_OUTPUT_FILENAME = "sound.wav"
-
+WAVE_OUTPUT_FILENAME = "sounds/sound.wav"
 
 # Speech Recognition Initialization
 r = sr.Recognizer()
 
 
-def mic(vlc_obj=None):
+def mediaplayer(file):
+    if system() == 'Windows':
+        import winsound
+        winsound.PlaySound(file, winsound.SND_FILENAME)
+
+    else:
+        from pydub import AudioSegment
+        from pydub.playback import play
+
+        sound = AudioSegment.from_mp3(file)
+        play(sound)
+
+
+def mic():
     print('Listening')
-    playfile = vlc_obj
     p = pyaudio.PyAudio()
 
     stream = p.open(format=FORMAT,
@@ -29,14 +41,14 @@ def mic(vlc_obj=None):
     print("* Speak")
 
     frames = []
-    playfile('cortana_open.mp3')
+    mediaplayer('sounds/CortanaOpen.mp3')
     for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
         data = stream.read(CHUNK)
         frames.append(data)
 
     print("**Converting to Audio")
     stream.stop_stream()
-    playfile('cortana_close.mp3')
+    mediaplayer('sounds/CortanaClose.mp3')
     stream.close()
     p.terminate()
 
@@ -50,15 +62,15 @@ def mic(vlc_obj=None):
 
 def speech_synth():
     try:
-        recorded = sr.AudioFile('sound.wav')
+        recorded = sr.AudioFile('sounds/sound.wav')
         with recorded as source:
             audio = r.record(source)
         string = r.recognize_google(audio)
         return string
     except sr.UnknownValueError:
-        return None
-    except sr.RequestError:
         return -1
+    except sr.RequestError:
+        return -2
 
 
 def listen():
@@ -67,4 +79,4 @@ def listen():
 
 
 if __name__ == '__main__':
-    pass
+    mic()
