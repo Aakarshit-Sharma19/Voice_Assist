@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>732</width>
+    <height>623</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+       <item row="1" column="0">
+           <widget class="QTextBrowser" name="history"/>
+       </item>
+       <item row="2" column="0">
+           <widget class="QLineEdit" name="text_input">
+               <property name="text">
+                   <string>Type In what you want to say</string>
+               </property>
+           </widget>
+       </item>
+       <item row="3" column="0">
+           <layout class="QGridLayout" name="gridLayout_5">
+               <item row="0" column="4">
+                   <widget class="QPushButton" name="pushHelp">
+                       <property name="text">
+                           <string>Help</string>
+                       </property>
+                   </widget>
+               </item>
+               <item row="0" column="1">
+                   <spacer name="horizontalSpacer">
+                       <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                           <size>
+                               <width>390</width>
+                               <height>27</height>
+                           </size>
+                       </property>
+                   </spacer>
+               </item>
+               <item row="0" column="2">
+                   <widget class="QPushButton" name="pushAcceptInput">
+                       <property name="text">
+                           <string>Listen</string>
+                       </property>
+                   </widget>
+               </item>
+               <item row="0" column="5">
+                   <widget class="QPushButton" name="pushAbout">
+                       <property name="text">
+                           <string>About</string>
+                       </property>
+                   </widget>
+               </item>
+               <item row="0" column="3">
+                   <widget class="QPushButton" name="pushSwitchToText">
+                       <property name="text">
+                           <string>Switch To Text</string>
+                       </property>
+                   </widget>
+               </item>
+               <item row="0" column="0">
+                   <widget class="QLabel" name="status">
+                       <property name="minimumSize">
+                           <size>
+                               <width>200</width>
+                               <height>0</height>
+                           </size>
+                       </property>
+                       <property name="text">
+                           <string/>
+                       </property>
+                   </widget>
+               </item>
+           </layout>
+       </item>
+       <item row="0" column="0">
+           <layout class="QGridLayout" name="layoutHistory">
+               <item row="0" column="1">
+                   <widget class="QLabel" name="labelAssistant">
+                       <property name="minimumSize">
+                           <size>
+                               <width>0</width>
+                               <height>0</height>
+                           </size>
+                       </property>
+                       <property name="text">
+                           <string>&lt;center style=&quot;font-family: sans-serif; font-size: large;&quot;&gt;&lt;strong&gt;Voice
+                               Assistant&lt;strong/&gt;&lt;center/&gt;
+                           </string>
+                       </property>
+                   </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

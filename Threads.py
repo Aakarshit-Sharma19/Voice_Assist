@@ -1,7 +1,9 @@
 # Made by Aakarshit Sharma
-from PyQt5 import QtCore
 import sys
 import webbrowser
+
+from PyQt5 import QtCore
+
 
 class GuiFunctions:
 
@@ -52,7 +54,7 @@ class VoiceFunctions(QtCore.QObject):
 
     def speak(self, string):
         self.signalSetStatus.emit('Voice Assistant:' + string)
-        status = self.parent.voice.synth_speech(self.comms, string)
+        status = self.parent.voice.synthesize_speech(self.comms, string)
         self.signalDefaultStatus.emit()
         if status == -1:
             self.signalTempStatus.emit(
@@ -64,7 +66,7 @@ class VoiceFunctions(QtCore.QObject):
 
         self.signalSetStatus.emit('Listening')
         self.spa.mic(self.voice.playfile)
-        self.said_text = self.spa.speech_synth()
+        self.said_text = self.spa.speech_to_text()
         if self.said_text is not None:
             self.signalAppendUserHistory.emit(self.said_text)
         else:
